@@ -1,0 +1,23 @@
+{
+  "name": "wlab",
+  "version": "1.0.0",
+  "description": "Lab Reservation System",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "cors": "*",
+    "express": "*",
+    "jsonwebtoken": "*",
+    "moment-timezone": "^0.5.21",
+    "mongoose": "*",
+    "passport": "*",
+    "passport-jwt": "*"
+  },
+  "author": "kobi",
+  "license": "ISC"
+}

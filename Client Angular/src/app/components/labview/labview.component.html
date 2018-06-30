@@ -1,0 +1,76 @@
+<div class="bs-docs-section">
+
+  <div class="card border-primary mb-3">
+    <div class="card-header">Header</div>
+    <div class="card-body">
+      <h4 class="card-title">
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </h4>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+      <table class="table table-hover">
+        <thead>
+          <tr class="table-info">
+            <th scope="col">Time Solt</th>
+            <th scope="col">Lab A</th>
+            <th scope="col">Lab B</th>
+            <th scope="col">Lab C</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-primary">
+            <th scope="row">8AM-10AM</th>
+            <td *ngIf="labA8"><span class="badge badge-success">Reserved</span></td>
+            <td *ngIf="!labA8"><span class="badge badge-warning">Free</span></td>
+            <td *ngIf="labB8"> <span class="badge  badge-success">Reserved</span></td>
+            <td *ngIf="!labB8"><span class="badge badge-warning">Free</span></td>
+            <td *ngIf="labC8"> <span class="badge  badge-success">Reserved</span></td>
+            <td *ngIf="!labC8"><span class="badge badge-warning">Free</span></td>
+
+          </tr>
+          <tr class="table-active">
+            <th scope="row">10AM-12AM</th>
+            <td *ngIf="labA10"> <span class="badge  badge-success">Reserved</span></td>
+            <td *ngIf="!labA10"><span class="badge badge-warning">Free</span></td>
+            <td *ngIf="labB10"> <span class="badge  badge-success">Reserved</span></td>
+            <td *ngIf="!labB10"><span class="badge badge-warning">Free</span></td>
+            <td *ngIf="labC10"> <span class="badge badge-success">Reserved</span></td>
+            <td *ngIf="!labC10"><span class="badge badge-warning">Free</span></td>
+          </tr>
+          <tr class="table-primary">
+            <th scope="row">12PM-2PM</th>
+            <td *ngIf="labA12"> <span class="badge badge-success">Reserved</span></td>
+            <td *ngIf="!labA12"><span class="badge badge-warning">Free</span></td>
+            <td *ngIf="labB12"> <span class="badge badge-success">Reserved</span></td>
+            <td *ngIf="!labB12"><span class="badge badge-warning">Free</span></td>
+            <td *ngIf="labC12"> <span class="badge badge-success">Reserved</span></td>
+            <td *ngIf="!labC12"> <span class="badge badge-warning">Free</span></td>
+          </tr>
+          <tr class="table-active">
+            <th scope="row">2PM-4PM</th>
+            <td *ngIf="labA2"> <span class="badge  badge-success">Reserved</span></td>
+              <td *ngIf="!labA2"><span class="badge badge-warning">Free</span></td>
+              <td *ngIf="labB2"> <span class="badge badge-success">Reserved</span></td>
+              <td *ngIf="!labB2"><span class="badge badge-warning">Free</span></td>
+              <td *ngIf="labC2"> <span class="badge badge-success">Reserved</span></td>
+              <td *ngIf="!labC2"><span class="badge badge-warning">Free</span></td>
+          </tr>
+          <tr class="table-primary">
+            <th scope="row">4PM-6PM</th>
+            <td *ngIf="labA4"> <span class="badge badge-success">Reserved</span></td>
+              <td *ngIf="!labA4"><span class="badge badge-warning">Free</span></td>
+              <td *ngIf="labB4"> <span class="badge  badge-success">Reserved</span></td>
+              <td *ngIf="!labB4"><span class="badge badge-warning">Free</span></td>
+              <td *ngIf="labC4"> <span class="badge  badge-success">Reserved</span></td>
+              <td *ngIf="!labC4"> <span class="badge badge-warning">Free</span></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
