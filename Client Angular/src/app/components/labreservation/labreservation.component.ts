@@ -4,6 +4,7 @@ import { ValidateService } from '../../services/validate.service';
 import { AuthService } from '../../services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
+import { Profile } from 'selenium-webdriver/firefox';
 
 @Component({
   selector: 'app-labreservation',
@@ -11,14 +12,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./labreservation.component.css']
 })
 export class LabreservationComponent implements OnInit {
-
+  user: Object;
   username: String;
   labname: String;
   date: Date;
   reserved: Boolean;
 
 
+  Labname = [
+    { id: 0, name: 'Select', value: 'kk' },
+    { id: 1, name: 'Lab A', value: 'Lab A' },
+    { id: 2, name: 'Lab B', value: 'Lab B' },
+    { id: 3, name: 'Lab C', value: 'Lab C' }
 
+
+  ];
+  labno = 0;
 
 
   selectedTimeOption = [];
@@ -44,9 +53,26 @@ export class LabreservationComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    this.authService.getProfile().subscribe(profile => {
+      this.user = profile.user;
+      console.log(this.user['username']);
+    },
+      err => {
+        console.log(err);
+        return false;
+      });
   }
 
   onReserve() {
+
+    if (this.labno == 1) {
+      this.labname = 'Lab A';
+    } else if (this.labno == 2) {
+      this.labname = 'Lab B';
+    } else if (this.labno == 3) {
+      this.labname = 'Lab C';
+    }
 
 
 
@@ -77,7 +103,7 @@ export class LabreservationComponent implements OnInit {
               time: j,
               reservation: {
                 reserved: true,
-                username: this.username
+                username: this.user['username']
               }
             }
 

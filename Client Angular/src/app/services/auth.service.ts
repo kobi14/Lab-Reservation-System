@@ -18,30 +18,31 @@ import { tokenNotExpired } from 'angular2-jwt';
   providedIn: 'root'
 })
 export class AuthService {
-  authToken:any;
-  user:any;
+  authToken: any;
+  user: any;
 
 
-  constructor(private http:Http) { }
+  constructor(private http: Http) { }
 
   registerUser(user) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/register', user, {headers: headers})
+    return this.http.post('http://localhost:3000/users/register', user, { headers: headers })
       .pipe(map(res => res.json()));
   }
 
   addReservation(reserve) {
     let headers = new Headers();
+    headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/reserves/lab', reserve, {headers: headers})
+    return this.http.post('http://localhost:3000/reserves/lab', reserve, { headers: headers })
       .pipe(map(res => res.json()));
   }
 
   authenticateUser(user) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/authenticate', user, {headers: headers})
+    return this.http.post('http://localhost:3000/users/authenticate', user, { headers: headers })
       .pipe(map(res => res.json()));
   }
   getProfile() {
@@ -49,14 +50,15 @@ export class AuthService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/users/profile', {headers: headers})
+    return this.http.get('http://localhost:3000/users/profile', { headers: headers })
       .pipe(map(res => res.json()));
   }
-  getReserve() {
+  getReserve(date: Date) {
     let headers = new Headers();
     this.loadToken();
+    headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/reserves/view', {headers: headers})
+    return this.http.get('http://localhost:3000/reserves/view/' + date, { headers: headers })
       .pipe(map(res => res.json()));
   }
   storeUserData(token, user) {
@@ -76,9 +78,9 @@ export class AuthService {
 
   }
 
-  logout(){
-    this.authToken=null;
-    this.user=null;
+  logout() {
+    this.authToken = null;
+    this.user = null;
     localStorage.clear();
   }
 

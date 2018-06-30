@@ -54,7 +54,7 @@ var labSchema = mongoose.Schema({
 
 var dateSchema = mongoose.Schema({
     date: {
-        type: String
+        type: Date
     },
     labd: [labSchema]
 });

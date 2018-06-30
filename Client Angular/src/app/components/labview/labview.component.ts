@@ -38,8 +38,36 @@ export class LabviewComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) { }
 
+
+
   ngOnInit() {
-    this.authService.getReserve().subscribe((data: Object[]) => {
+
+  }
+
+
+  onSearchChange(searchValue: Date) {
+    console.log(searchValue);
+    this.labA8 = false;
+    this.labA10 = false;
+    this.labA12 = false;
+    this.labA2 = false;
+    this.labA4 = false;
+
+
+    this.labB8 = false;
+    this.labB10 = false;
+    this.labB12 = false;
+    this.labB2 = false;
+    this.labB4 = false;
+
+
+    this.labC8 = false;
+    this.labC10 = false;
+    this.labC12 = false;
+    this.labC2 = false;
+    this.labC4 = false;
+
+    this.authService.getReserve(searchValue).subscribe((data: Object[]) => {
       this.reserve = data;
       // console.log(data);
       for (let i of data) {
@@ -134,5 +162,10 @@ export class LabviewComponent implements OnInit {
       });
 
   }
+
+
+}
+
+
 
 }

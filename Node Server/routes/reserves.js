@@ -1,6 +1,10 @@
 const express = require('express');
 var mongodb = require('mongodb');
 
+const passport=require('passport');
+
+const jwt=require('jsonwebtoken');
+
 
 const router = express.Router();
 const momentTimezone = require('moment-timezone')
@@ -20,7 +24,7 @@ const dateAEST = date => {
 
 //reserve lab
 
-router.post('/lab', (req, res, next) => {
+router.post('/lab',passport.authenticate('jwt', {session:false}), (req, res, next) => {
     //res.send('lab');
 
     // let newReservation = new Reserve({
@@ -74,10 +78,10 @@ router.post('/lab', (req, res, next) => {
 });
 
 // View RESERVATION
-router.get('/view', (req, res, next) => {
+router.get('/view/:date',passport.authenticate('jwt', {session:false}), (req, res, next) => {
     //const date='2018-06-29 00:00:00.000';
-    //const date=req.params.date;
-    const date = '2018-07-02';
+         date=req.params.date;
+    //const date = '2018-07-02';
 
 
     //var cursor = db.collection('test').find();

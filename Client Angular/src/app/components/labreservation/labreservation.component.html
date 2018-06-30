@@ -11,15 +11,22 @@
         <div class="jumbotron">
           <h1 class="display-3" align="center">LAB RESERVATION</h1>
           <form (submit)="onReserve()" >
-              <div class="form-group">
+              <div  class="form-group">
+                  <div *ngIf="user">
                   <label for="username" class="col-form-label">User Name</label>
-                  <input type="text" [(ngModel)]="username" name="username" class="form-control" id="username" placeholder="---">
+                  
+                  <input type="text" [(ngModel)]="user.username" name="username" class="form-control" id="username" readonly >
+                </div>
                 </div>
               <div class="row">
                   <div class="col-lg-6">
               <div class="form-group">
                 <label for="lab name" class="col-form-label">Lab Name</label>
-                <input type="text" [(ngModel)]="labname" name="labname" class="form-control" id="labname" placeholder="Enter lab Name">
+                <select [(ngModel)]="labno" name="Labname" class="form-control">
+
+                    <option *ngFor="let option of Labname" [value]="option.id"> {{ option.name }} </option>
+                </select>
+                <!-- <input type="text" [(ngModel)]="labname" name="labname" class="form-control" id="labname" placeholder="Enter lab Name"> -->
               </div>
               </div>
               <div class="col-lg-6">
