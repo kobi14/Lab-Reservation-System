@@ -17,6 +17,10 @@ const UserShema =mongoose.Schema({
     password:{
         type:String,
         require:true
+    },
+    role:{
+        type:String,
+        default:"enduser"
     }
 
 
@@ -31,6 +35,15 @@ module.exports.getUserById=function(id,callback){
 module.exports.getUserByUsername=function(username,callback){
     const query={username:username}
     User.findOne(query,callback); 
+}
+module.exports.getUserByUsermail=function(email,callback){
+    const query={email:email}
+    User.findOne(query,callback); 
+}
+
+module.exports.checkRole=function(role,callback){
+    const query={role:role}
+    User.findOne(query,callback);
 }
 
 module.exports.addUser = function(newUser, callback) {

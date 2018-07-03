@@ -3,6 +3,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const passport = require('passport');
+const passport2 = require('passport');
 const mongoose = require('mongoose');
 
 const config=require('./config/database');
@@ -28,6 +29,7 @@ mongoose.connection.on('error',(err)=>{
 const app =express();
 const users=require('./routes/users.js');
 const reserves=require('./routes/reserves.js');
+const admins=require('./routes/admins');
 
 
 app.use(cors());
@@ -44,8 +46,12 @@ require('./config/passport')(passport);
 
 
 
+
+
+
 app.use('/users',users);
 app.use('/reserves',reserves);
+app.use('',admins);
 
 //Set Static Folder 
 app.use(express.static(path.join(__dirname,'public')));

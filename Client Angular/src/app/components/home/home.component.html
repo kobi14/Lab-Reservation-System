@@ -1,3 +1,22 @@
-<p>
-  home works!
-</p>
+<div class="jumbotron text-center" style="margin-top:75px;">
+  <h1>UCSC Lab Reservation MEAN  Stack App</h1>
+  <p class="lead">Welcome to our System </p>
+  <div *ngIf="!authService.loggedIn()">
+    <a class="btn btn-primary" [routerLink]="['/register']"  >Register</a> <a class="btn btn-dark" [routerLink]="['/login']" >Login</a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <h3>Reservation</h3>
+    <p>All the current lab reservations should be displayed in the system</p>
+  </div>
+  <div class="col-md-4">
+    <h3>The Users</h3>
+    <p>The user(lecturers or instructors) should be able to search on lab availability for a given time. The user should be able to do a new reservation</p>
+  </div>
+  <div class="col-md-4">
+    <h3>Admin</h3>
+    <p>If the reservations are overlapping, that should be informed to the user. Admin of the system should have the functionality to generate reports on lab reservations.</p>
+  </div>
+</div>

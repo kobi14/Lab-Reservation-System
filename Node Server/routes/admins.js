@@ -12,6 +12,7 @@ const config = require('../config/database');
 const User = require('../model/user');
 
 
+
 //Register
 
 router.post('/register', (req, res, next) => {
@@ -20,7 +21,8 @@ router.post('/register', (req, res, next) => {
         name: req.body.name,
         email: req.body.email,
         username: req.body.username,
-        password: req.body.password
+        password: req.body.password,
+        role: req.body.role
     });
     User.addUser(newUser, (err, user) => {
         if (err) {
@@ -36,18 +38,17 @@ router.post('/register', (req, res, next) => {
 router.post('/authenticate', (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;
-
+    const role = 'admin';
 
     User.getUserByUsername(username, (err, user) => {
         if (err) throw err;
 
-
-
         if (!user) {
             return res.json({ success: false, msg: 'User Not Found' });
         }
-        
-        if (user.role == 'enduser') {
+        //console.log(user.role == role);
+        if (user.role == role) {
+
 
             User.comparePassword(password, user.password, (err, isMatch) => {
                 if (err) throw err;
@@ -58,25 +59,28 @@ router.post('/authenticate', (req, res, next) => {
                     res.json({
                         success: true,
                         token: 'JWT ' + token,
+                        role:user.role,
                         user: {
                             id: user._id,
                             name: user.name,
                             username: user.username,
                             email: user.email,
-                            role: user.role,
+                            role:user.role,
+                           
                         }
                     })
                 } else {
                     return res.json({ success: false, msg: 'Wrong pass' });
                 }
             });
+
         } else {
 
             return res.json({ success: false, msg: 'User Role Not Match' });
 
         }
 
-    
+
 
 
 
@@ -86,7 +90,12 @@ router.post('/authenticate', (req, res, next) => {
 
 // Profile
 router.get('/profile', passport.authenticate('jwt', { session: false }), (req, res, next) => {
-    res.json({ user: req.user });
+    //res.json(req.user.role);
+    if ((req.user.role) == 'admin') {
+
+        res.json({ user: req.user });
+    }
+
 });
 
 

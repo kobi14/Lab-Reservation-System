@@ -54,4 +54,12 @@ export class ValidateService {
 
   }
 
+  validateLogin(user) {
+    if (user.username == undefined || user.password == undefined) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
 }

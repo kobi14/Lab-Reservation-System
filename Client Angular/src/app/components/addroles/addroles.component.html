@@ -7,7 +7,13 @@
         <h4 class=" card-header bg-primary text-white" align="center">User Register</h4>
 
         <form (submit)="onRegisterSubmit()">
-
+            <div class="form-group">
+                <label for="lab name" class="col-form-label">User Role</label>
+                <select [(ngModel)]="userrole" name="userRole" class="form-control">
+    
+                  <option *ngFor="let option of userRole" [value]="option.id"> {{ option.name }} </option>
+                </select>
+              </div>
           <div class="form-group">
             <label for="name" class="col-form-label">Name</label>
             <input type="text" [(ngModel)]="name" name="name" class="form-control" id="name" placeholder="Enter Name">
