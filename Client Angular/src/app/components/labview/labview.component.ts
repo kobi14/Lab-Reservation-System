@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+
+import * as jsPDF from 'jspdf';
+
+
 
 
 @Component({
@@ -10,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class LabviewComponent implements OnInit {
   reserve: Object[];
+  day:String;
 
   labA8 = false;
   labA10 = false;
@@ -164,7 +169,53 @@ export class LabviewComponent implements OnInit {
   }
 
 
+  exportAction() {
+
+
+    const specialElementHandlers = {
+      // element with id of "bypass" - jQuery style selector
+      '.no-export': function(element, renderer) {
+        // true = "handled elsewhere, bypass text extraction"
+        return true;
+      }
+    };
+    const doc = new jsPDF('p', 'pt', 'a4');
+ 
+  
+  const source = document.getElementById('exportthis').innerHTML;
+
+  const margins = {
+    top: 10,
+    bottom: 10,
+    left: 10,
+    width: 595
+  };
+
+  doc.fromHTML(
+    source, // HTML string or DOM elem ref.
+    margins.left,
+    margins.top, {
+      'width': margins.width,
+      //'elementHandlers': specialElementHandlers
+    },
+    function(dispose) {
+      doc.save('Test.pdf');
+    }, margins);
+
+
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
