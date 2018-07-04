@@ -20,8 +20,21 @@
 
     <div class="card text-black bg-light border-primary mb-3" style="margin-top:75px;">
       <div class="card-body">
-        <h4 class=" card-header bg-secondary text-black" align="center" [routerLinkActive]="['active']"><a class="nav-link" [routerLink]="['/adduser']">Add User Role</a></h4>
-    
+        <h4 class=" card-header bg-primary text-white" align="center" [routerLinkActive]="['active']">Add User Role</h4>
+        <div class="card-body" align="center">
+          <a class="nav-link" class="btn btn-lg btn-info" [routerLink]="['/adduser']">Add</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+
+    <div class="card text-black bg-light border-primary mb-3" style="margin-top:75px;">
+      <div class="card-body">
+        <h4 class=" card-header bg-primary text-white" align="center" [routerLinkActive]="['active']">Report Generate</h4>
+        <div class="card-body" align="center">
+          <a class="nav-link" class="btn btn-lg btn-info" [routerLink]="['/view']">Report</a>
+        </div>
       </div>
     </div>
   </div>

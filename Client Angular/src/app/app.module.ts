@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { RoleGuardService as RoleGuard } from './guards/auth.guard';
 import { RoleGuardService2 as RoleGuard2 } from './guards/auth.guard';
 
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
@@ -34,7 +35,7 @@ const appRoutes: Routes = [
   { path: 'reserve', component: LabreservationComponent, canActivate: [AuthGuard, RoleGuard2] },
   { path: 'view', component: LabviewComponent, canActivate: [AuthGuard] },
   { path: 'dash', component: AdminpanelComponent, canActivate: [RoleGuard] },
-  { path: 'adduser', component: AddrolesComponent,  },
+  { path: 'adduser', component: AddrolesComponent, canActivate: [RoleGuard] },
 
 ];
 
@@ -66,4 +67,6 @@ const appRoutes: Routes = [
   providers: [ValidateService, AuthService, AuthGuard, RoleGuard, RoleGuard2],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+}

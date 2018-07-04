@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
       password: this.password,
       role: 'enduser'
 
-    }
+    };
     // REquire Field
     if (!this.validateService.validateRegister(user)) {
       // console.log("Fill all the fields");

@@ -46,6 +46,7 @@ export class LabviewComponent implements OnInit {
 
 
   ngOnInit() {
+    this.authService.isAdmin();
 
   }
 
@@ -196,7 +197,7 @@ export class LabviewComponent implements OnInit {
     margins.left,
     margins.top, {
       'width': margins.width,
-      //'elementHandlers': specialElementHandlers
+      'elementHandlers': specialElementHandlers
     },
     function(dispose) {
       doc.save('Test.pdf');

@@ -71,8 +71,10 @@
         </tbody>
       </table>
       
+      </div  >
+      <div *ngIf="authService.isAdmin()">
+      <button class="btn btn-lg badge-pill  btn-primary" (click)="exportAction()">export</button>
       </div>
-      <button (click)="exportAction()">export</button>
     </div>
   </div>
 

@@ -42,7 +42,7 @@ export class AddrolesComponent implements OnInit {
       email: this.email,
       password: this.password,
 
-    }
+    };
     // REquire Field
     if (!this.validateService.validateRegister(user)) {
       // console.log("Fill all the fields");
@@ -62,8 +62,8 @@ export class AddrolesComponent implements OnInit {
 
       this.authService.registerUser(user).subscribe(data => {
         if (data.success) {
-          this.flashmsg.show('You are now registered and can now login', { cssClass: 'alert-success', timeout: 8000 });
-          this.router.navigate(['/login']);
+          this.flashmsg.show('He/She is now registered and can now login', { cssClass: 'alert-success', timeout: 8000 });
+          this.router.navigate(['/dash']);
         } else {
           this.flashmsg.show('Something went wrong', { cssClass: 'alert-danger', timeout: 8000 });
           this.router.navigate(['/register']);
@@ -79,12 +79,12 @@ export class AddrolesComponent implements OnInit {
         password: this.password,
         role: 'admin'
 
-      }
+      };
 
       this.authService.registerAdmin(user2).subscribe(data => {
         if (data.success) {
           this.flashmsg.show('You are now registered and can now login', { cssClass: 'alert-success', timeout: 8000 });
-          this.router.navigate(['/login']);
+          this.router.navigate(['/dash']);
         } else {
           this.flashmsg.show('Something went wrong', { cssClass: 'alert-danger', timeout: 8000 });
           this.router.navigate(['/register']);
